@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model adress {
+  street      String       @id @db.VarChar(255)
+  city        String?      @db.VarChar(255)
+  adressstate String?      @db.VarChar(255)
+  apartment   apartment[]
+  university  university[]
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model apartment {
+  apartmentid   Int       @id @default(autoincrement())
+  apartmentsize Int
+  builtat       DateTime? @db.Date
+  adressstreet  String?   @db.VarChar(255)
+  landlordname  String?   @db.VarChar(255)
+  adress        adress?   @relation(fields: [adressstreet], references: [street], onDelete: NoAction, onUpdate: NoAction)
+  landlord      landlord? @relation(fields: [landlordname], references: [landlordname], onDelete: NoAction, onUpdate: NoAction)
+  review        review[]
+}
+
+model landlord {
+  landlordname String      @id @db.VarChar(255)
+  website      String?     @db.VarChar(255)
+  apartment    apartment[]
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model review {
+  reviewid       Int         @id @default(autoincrement())
+  description    String?
+  rate           Int?
+  apartmentid    Int?
+  universityname String?     @db.VarChar(80)
+  apartment      apartment?  @relation(fields: [apartmentid], references: [apartmentid], onDelete: NoAction, onUpdate: NoAction)
+  university     university? @relation(fields: [universityname], references: [universityname], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model university {
+  universityname    String   @id @db.VarChar(80)
+  adressstreet      String?  @db.VarChar(255)
+  universitywebsite String?  @db.VarChar(255)
+  imagesrc          String?  @db.VarChar(255)
+  adress            adress?  @relation(fields: [adressstreet], references: [street], onDelete: NoAction, onUpdate: NoAction)
+  review            review[]
+}

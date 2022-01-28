@@ -1,0 +1,6 @@
+generator client {
+
+  provider = "prisma-client-js"
+   //previewFeatures = ["mongoDb"]
+   output = "../node_modules/.prisma/client"
+}

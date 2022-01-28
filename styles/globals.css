@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.fade-in {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    transform-origin: left;
+}
+
+#__next {}
+
+.strokeme {
+    color: white;
+    text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222;
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+h3 {
+    font-size: 1.17em;
+    font-weight: bolder;
+}
+
+.HeroHeading {
+    font-size: 2.5em;
+    font-weight: bolder;
+}
+
+h4 {
+    font-size: 1em;
+    font-weight: bolder;
+}
+
+h5 {
+    font-size: 0.83em;
+    font-weight: bolder;
+}
+
+p {
+    font-size: 1em;
+}
+
+button:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 8px 2px rgb(194, 194, 194);
+}
+
+input:focus {
+    outline: none;
+}
+
+input {
+    padding-left: 10px;
+    border: 0px;
+}
+
+button {
+    box-shadow: 0px 0px 8px 2px lightgray;
+    padding: 2px;
+    font-weight: 500;
+    color: whitesmoke;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+    color: #222;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+main {
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
